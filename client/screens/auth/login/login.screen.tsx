@@ -1,6 +1,6 @@
 import { View, Text, ScrollView, Image, TextInput } from 'react-native'
 import React, { useEffect } from 'react'
-import { UseDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector, } from 'react-redux'
 
 
 import {
@@ -26,14 +26,19 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { loginStyles } from '@/styles/login/loginStyles'
 import { RootState } from '@/store/configureStore'
+import { setUserInfo } from '@/store/authSlice'
 
 export default function LoginScreen() {
 
-    const userInfo = useSelector((state: RootState) => state.authentication.userInfo)
 
-    useEffect(()=> {
-        console.log(userInfo.email);
-    },[])
+    const userInfo = useSelector((state: RootState) => state.authentication.userInfo) || { email: '', password: '' };
+
+    useEffect(() => {
+        console.log("UserInfo =>", userInfo);
+    }, [userInfo])
+
+
+    const dispatch = useDispatch()
 
 
     return (
@@ -68,8 +73,18 @@ export default function LoginScreen() {
                                 }]}
                             keyboardType='email-address'
                             value={userInfo.email}
+                            placeholder='support@kamidemy.com'
+                            onChangeText={(value) => dispatch(setUserInfo({ ...userInfo, email: value }))}
                         />
                     </View>
+                </View>
+                <View>
+                    <Text>
+                        Email: {userInfo.email}
+                    </Text>
+                    <Text>
+                        Pass: {userInfo.password}
+                    </Text>
                 </View>
             </ScrollView>
         </SafeAreaView>

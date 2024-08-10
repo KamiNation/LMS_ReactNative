@@ -8,10 +8,8 @@ import { Provider, useSelector } from 'react-redux';
 import { Stack } from 'expo-router';
 import { PersistGate } from 'redux-persist/integration/react'
 
-
 // Custom import
 import { persistor, RootState, store } from '@/store/configureStore';
-
 
 
 export {
@@ -24,6 +22,7 @@ export {
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+
   const [loaded, error] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
     ...FontAwesome.font,
@@ -49,7 +48,7 @@ export default function RootLayout() {
 
   return (
     <Provider store={store}>
-      <PersistGate persistor={persistor}>
+      <PersistGate loading={null} persistor={persistor}>
         <RootLayoutNav />
       </PersistGate>
     </Provider>

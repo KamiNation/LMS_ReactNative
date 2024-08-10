@@ -18,7 +18,7 @@ const rootReducer = combineReducers({
 })
 
 
-const persistedReducer = persistReducer<ReturnType<typeof rootReducer>>(persistConfig, rootReducer)
+const persistedReducer = persistReducer<ReturnType<typeof rootReducer>>(persistConfig, rootReducer);
 
 
 export const store = configureStore({
@@ -27,7 +27,7 @@ export const store = configureStore({
         getDefaultMiddleware({
             serializableCheck: false,
         })
-})
+});
 
 
 

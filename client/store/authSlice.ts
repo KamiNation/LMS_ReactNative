@@ -8,7 +8,7 @@ const initialState: authState = {
     buttonSpinner: false,
     userInfo: {
         email: "adedamolacopy@gmail.com",
-        password: "********"
+        password: "password"
     }
 };
 
