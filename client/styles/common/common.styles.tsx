@@ -4,7 +4,7 @@ import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-nat
 
 
 export const commonStyles = StyleSheet.create({
-    container:{
+    container: {
         flex: 1,
         alignItems: "center",
         justifyContent: "center"
@@ -16,14 +16,14 @@ export const commonStyles = StyleSheet.create({
         borderRadius: 5,
         marginHorizontal: 5
     },
-    dotStyle:{
-        backgroundColor: "#2467EC",
+    dotStyle: {
+        backgroundColor: "#C6C7CC",
         width: responsiveWidth(2.5),
         height: responsiveWidth(2.5),
         borderRadius: 5,
         marginHorizontal: 5
     },
-    activeDotStyles:{
+    activeDotStyles: {
         backgroundColor: "#2467EC",
         width: responsiveWidth(2.5),
         height: responsiveWidth(2.5),
@@ -38,5 +38,15 @@ export const commonStyles = StyleSheet.create({
         fontSize: hp("2.5%"),
         textAlign: "center",
         color: "#575757"
+    },
+    input: {
+        height: 55,
+        marginHorizontal: 16,
+        borderRadius: 8,
+        paddingLeft: 35,
+        fontSize: 16,
+        backgroundColor: "white",
+        color: "#A1A1A1",
+
     }
 })

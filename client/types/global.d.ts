@@ -8,3 +8,14 @@ export interface onboardingSwipingData {
     title?: string
     subtitle?: string
 }
+
+
+export interface authState {
+    isLoggedIn: boolean
+    isPasswordVisible: boolean
+    buttonSpinner: boolean
+    userInfo: {
+        email: string,
+        password: string
+    }
+}

@@ -40,10 +40,10 @@ const WelcomeIntroScreen = () => {
                     style={styles.slideImages}
                 />
                 <View>
-                    <Text style={[{fontFamily: "Raleway_700Bold"}, commonStyles.title]}>
+                    <Text style={[{ fontFamily: "Raleway_700Bold" }, commonStyles.title]}>
                         {item.title}
                     </Text>
-                    <Text style={[{fontFamily: "Nunito_400Regular"}, commonStyles.description]}>
+                    <Text style={[{ fontFamily: "Nunito_400Regular" }, commonStyles.description]}>
                         {item.subtitle}
                     </Text>
                 </View>
@@ -66,11 +66,18 @@ const WelcomeIntroScreen = () => {
                 </View>
             )}
             renderDoneButton={() => (
-                <View style={commonStyles.buttonContainer}>
+                <View style={styles.welcomeButtonNext}>
                     <Text style={[styles.buttonText, { fontFamily: "Nunito_600SemiBold" }]}>
                         Done
                     </Text>
                 </View>
+            )}
+            renderSkipButton={()=>(
+                <View style={styles.welcomeButtonNext}>
+                <Text style={[styles.buttonText, { fontFamily: "Nunito_600SemiBold" }]}>
+                    Skip
+                </Text>
+            </View>
             )}
             showSkipButton={false}
             dotStyle={commonStyles.dotStyle}
