@@ -8,7 +8,8 @@ import {
     SimpleLineIcons,
     Ionicons,
     Entypo,
-    FontAwesome
+    FontAwesome,
+    AntDesign
 } from '@expo/vector-icons'
 
 import {
@@ -167,13 +168,25 @@ export default function SignUpScreen() {
                                 loginStyles.input
                                 ,
                                 {
-                                    paddingLeft: 40
+                                    paddingLeft: 40,
+                                    marginBottom: -25
                                 }]}
                             keyboardType='default'
                             value={userInfo.name}
                             placeholder='full name here'
                             onChangeText={(value) => dispatch(setUserInfo({ ...userInfo, name: value }))}
 
+                        />
+                        <AntDesign
+                            style={
+                                {
+                                    position: "absolute",
+                                    left: 26,
+                                    top: 13,
+                                }}
+                            name="user"
+                            size={20}
+                            color={"#A1A1A1"}
                         />
                     </View>
                     <View>
@@ -182,7 +195,8 @@ export default function SignUpScreen() {
                                 loginStyles.input
                                 ,
                                 {
-                                    paddingLeft: 40
+                                    paddingLeft: 40,
+                                    
                                 }]}
                             keyboardType='email-address'
                             value={userInfo.email}

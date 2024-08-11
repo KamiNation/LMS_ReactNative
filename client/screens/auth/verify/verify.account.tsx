@@ -6,6 +6,7 @@ import { setCode } from '@/store/authSlice'
 import { verify } from '@/styles/verify/verifyStyles'
 import Button from '@/components/button/button'
 import { router } from 'expo-router'
+import { forget } from '@/styles/forget/forgetStyles'
 
 export default function VerifyAccountScreen() {
 
@@ -89,19 +90,24 @@ export default function VerifyAccountScreen() {
                     onPress={handleSubmit}
                 />
             </View>
-            <TouchableOpacity
-            onPress={()=> router.back()}
+            <View
+                style={forget.loginLink}
             >
                 <Text
-                style={{
-                    fontSize: 20,
-                    paddingTop: 20,
-                    fontWeight: "500"
-                }}
+                    style={[forget.backText,]}
                 >
-                Go back to Sign In
+                    Back To?
                 </Text>
-            </TouchableOpacity>
+                <TouchableOpacity
+                    onPress={() => router.back()}
+                >
+                    <Text
+                        style={[forget.loginText]}
+                    >
+                        Sign Up
+                    </Text>
+                </TouchableOpacity>
+            </View>
         </View>
     )
 }

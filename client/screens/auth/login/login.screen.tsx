@@ -120,7 +120,7 @@ export default function LoginScreen() {
         } else {
             dispatch(setError({
                 ...error,
-                password: " "
+                password: ""
             }));
             dispatch(setUserInfo({
                 ...userInfo, password: value
