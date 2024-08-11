@@ -7,9 +7,15 @@ const initialState: authState = {
     isPasswordVisible: false,
     buttonSpinner: false,
     userInfo: {
+        name: "kamidemy",
         email: "adedamolacopy@gmail.com",
-        password: "password"
-    }
+        password: "!password"
+    },
+    required: "",
+    error: {
+        password: ""
+    },
+    code: Array(4).fill("")
 };
 
 export const authSlice = createSlice({
@@ -25,13 +31,22 @@ export const authSlice = createSlice({
         setButtonSpinner: (state, action: PayloadAction<boolean>) => {
             state.buttonSpinner = action.payload;
         },
-        setUserInfo: (state, action: PayloadAction<{ email: string; password: string }>) => {
+        setUserInfo: (state, action: PayloadAction<{name: string; email: string; password: string }>) => {
             state.userInfo = action.payload;
+        },
+        setRequired: (state, action: PayloadAction<string>) => {
+            state.required = action.payload;
+        },
+        setError: (state, action: PayloadAction<{password: string}>) => {
+            state.error = action.payload
+        },
+        setCode: (state, action: PayloadAction<string[]>) => {
+            state.code = action.payload 
         }
     }
 });
 
 // Action creators are generated for each case reducer function
-export const { setIsLoggedIn, setIsPasswordVisible, setButtonSpinner, setUserInfo } = authSlice.actions;
+export const { setCode, setError, setRequired, setIsLoggedIn, setIsPasswordVisible, setButtonSpinner, setUserInfo } = authSlice.actions;
 
 export default authSlice.reducer;

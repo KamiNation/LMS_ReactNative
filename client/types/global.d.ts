@@ -2,6 +2,7 @@
 import { ImageSourcePropType } from "react-native"
 
 
+
 export interface onboardingSwipingData {
     id: number
     image: ImageSourcePropType
@@ -15,7 +16,18 @@ export interface authState {
     isPasswordVisible: boolean
     buttonSpinner: boolean
     userInfo: {
+        name: string,
         email: string,
         password: string
     }
+    required: string
+    error: {
+        password: string
+    }
+    code: string[]
+}
+
+export interface button {
+    title: string
+    onPress: () =>  void
 }

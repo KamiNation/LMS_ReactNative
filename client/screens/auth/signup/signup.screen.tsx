@@ -33,10 +33,10 @@ import { commonStyles } from '@/styles/common/common.styles'
 import { router } from 'expo-router'
 
 
-export default function LoginScreen() {
+export default function SignUpScreen() {
 
 
-    const userInfo = useSelector((state: RootState) => state.authentication.userInfo) || { email: '', password: '' };
+    const userInfo = useSelector((state: RootState) => state.authentication.userInfo) || { name: '', email: '', password: '' };
 
     const required = useSelector((state: RootState) => state.authentication.required)
 
@@ -48,6 +48,11 @@ export default function LoginScreen() {
 
     useEffect(() => {
         console.log("(Oga o) =>", userInfo);
+    }, [userInfo])
+
+    useEffect(() => {
+        console.log("Oga o fun error yi o =>", error);
+
     }, [userInfo])
 
 
@@ -120,7 +125,7 @@ export default function LoginScreen() {
         } else {
             dispatch(setError({
                 ...error,
-                password: " "
+                password: ""
             }));
             dispatch(setUserInfo({
                 ...userInfo, password: value
@@ -129,8 +134,8 @@ export default function LoginScreen() {
     }
 
 
-    const handleSignIn = () => {
-
+    const handleSignUp = () => {
+        router.push("/(routes)/verifyAccount")
     }
 
 
@@ -148,14 +153,29 @@ export default function LoginScreen() {
                     }
                     ]}
                 >
-                    Welcome Back!
+                    Let's get started
                 </Text>
                 <Text
                     style={loginStyles.learningText}
                 >
-                    Login to your existing account of kamidemy
+                    Create an account to Kamidemy to get all features
                 </Text>
                 <View style={loginStyles.inputContainer}>
+                    <View>
+                        <TextInput
+                            style={[
+                                loginStyles.input
+                                ,
+                                {
+                                    paddingLeft: 40
+                                }]}
+                            keyboardType='default'
+                            value={userInfo.name}
+                            placeholder='full name here'
+                            onChangeText={(value) => dispatch(setUserInfo({ ...userInfo, name: value }))}
+
+                        />
+                    </View>
                     <View>
                         <TextInput
                             style={[
@@ -186,7 +206,7 @@ export default function LoginScreen() {
                                 <View
                                     style={commonStyles.errorContainer}
                                 >
-                                    <Entypo name='cross' size={18} color={"blue"} />
+                                    <Entypo name='cross' size={18} color={"green"} />
                                 </View>
                             )
                         }
@@ -254,18 +274,7 @@ export default function LoginScreen() {
                             ) : null
                         }
                     </View>
-                    <TouchableOpacity
-                        onPress={() => router.push("/(routes)/forgot-password")}
-                    >
-                        <Text
-                            style={[
-                                loginStyles.forgotSection, { fontFamily: "Nunito_600SemiBold" }
-                            ]
-                            }
-                        >
-                            Forgot Password
-                        </Text>
-                    </TouchableOpacity>
+
 
                     <TouchableOpacity
                         style={{
@@ -275,7 +284,7 @@ export default function LoginScreen() {
                             backgroundColor: "green",
                             marginTop: 20
                         }}
-                        onPress={handleSignIn}
+                        onPress={handleSignUp}
                     >
                         {
                             buttonSpinner ? (
@@ -290,7 +299,7 @@ export default function LoginScreen() {
                                     }
                                     }
                                 >
-                                    SignIn
+                                    Sign Up
                                 </Text>
                             )
                         }
@@ -325,10 +334,10 @@ export default function LoginScreen() {
                             fontSize: 18,
                             fontFamily: "Raleway_600SemiBold_Italic"
                         }}>
-                            Don't have an account?
+                            Already have an account?
                         </Text>
                         <TouchableOpacity
-                            onPress={() => router.push("/(routes)/sign-up")}
+                            onPress={() => router.push("/(routes)/login")}
                         >
                             <Text
                                 style={{
@@ -336,7 +345,7 @@ export default function LoginScreen() {
                                     marginLeft: 5
                                 }}
                             >
-                                Sign Up
+                                Sign In
                             </Text>
                         </TouchableOpacity>
                     </View>

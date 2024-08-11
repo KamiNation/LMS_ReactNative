@@ -48,5 +48,13 @@ export const commonStyles = StyleSheet.create({
         backgroundColor: "white",
         color: "#A1A1A1",
 
+    },
+    errorContainer:{
+        flexDirection: "row",
+        alignItems: "center",
+        marginHorizontal: 16,
+        position: "absolute",
+        top: 60,
+        
     }
 })
